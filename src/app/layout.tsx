@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk as SpaceGrotesk } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/context/Theme";
-import Navbar from "@/components/navigation/navbar";
+import { Toaster } from "@/components/ui/sonner";
+import { SessionProvider } from "next-auth/react";
+import { getAuthSession } from "@/lib/auth";
+import { SessionProviderWrapper } from "@/components/providers/SessionProviderWrapper";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,26 +26,27 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+const RootLayout = async ({ children }: { children: React.ReactNode }) => {
+  const session = await getAuthSession();
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={` ${inter.variable} ${spaceGrotesk.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
-          {children}
-        </ThemeProvider>
+        <SessionProviderWrapper session={session}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+          <Toaster position="top-center" />
+        </SessionProviderWrapper>
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
