@@ -8,10 +8,20 @@ export const authOptions = {
     GithubProvider({
       clientId: process.env.AUTH_GITHUB_ID as string,
       clientSecret: process.env.AUTH_GITHUB_SECRET as string,
+      authorization: {
+        params: {
+          prompt: "select_account",
+        },
+      },
     }),
     GoogleProvider({
       clientId: process.env.AUTH_GOOGLE_ID as string,
       clientSecret: process.env.AUTH_GOOGLE_SECRET as string,
+      authorization: {
+        params: {
+          prompt: "select_account",
+        },
+      },
     }),
     // ...add more providers here
   ],

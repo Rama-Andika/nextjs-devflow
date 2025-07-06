@@ -3,7 +3,6 @@ import { Inter, Space_Grotesk as SpaceGrotesk } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/context/Theme";
 import { Toaster } from "@/components/ui/sonner";
-import { SessionProvider } from "next-auth/react";
 import { getAuthSession } from "@/lib/auth";
 import { SessionProviderWrapper } from "@/components/providers/SessionProviderWrapper";
 
@@ -30,6 +29,13 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
   const session = await getAuthSession();
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+        />
+      </head>
       <body
         className={` ${inter.variable} ${spaceGrotesk.variable} antialiased`}
       >
