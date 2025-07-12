@@ -28,7 +28,7 @@ const questions = [
     tags: [
       {
         _id: "1",
-        name: "React",
+        name: "Javascript",
       },
     ],
     author: { _id: "1", name: "Rama Andika" },
@@ -44,11 +44,16 @@ interface SearchParams {
 }
 
 const page = async ({ searchParams }: SearchParams) => {
-  const { query = "" } = await searchParams;
+  const { query = "", filter = "" } = await searchParams;
 
-  const filteredQuestions = questions.filter((q) =>
-    q.title.toLowerCase().includes(query)
-  );
+  const filteredQuestions = questions.filter((q) => {
+    const matchesQuery = q.title.toLowerCase().includes(query.toLowerCase());
+    const matchedFilter = filter
+      ? q.tags[0].name.toLowerCase() === filter.toLowerCase()
+      : true;
+
+    return matchesQuery && matchedFilter;
+  });
   return (
     <>
       <section className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
