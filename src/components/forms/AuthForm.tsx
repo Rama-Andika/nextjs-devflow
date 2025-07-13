@@ -85,7 +85,7 @@ const AuthForm = <T extends z.ZodTypeAny>({
 
         {formType === "SIGN_IN" ? (
           <p>
-            Don't have an account?
+            Don&apos;t have an account?
             <Link
               href={ROUTES.SIGN_UP}
               className="paragraph-medium primary-text-gradient"
