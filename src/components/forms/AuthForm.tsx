@@ -1,11 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Path,
-  SubmitHandler,
-  useForm,
-} from "react-hook-form";
+import { Path, SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -39,9 +35,7 @@ const AuthForm = <T extends z.ZodTypeAny>({
     defaultValues,
   });
 
-  const handleSubmit: SubmitHandler<T> = async () => {
-
-  };
+  const handleSubmit: SubmitHandler<T> = async () => {};
 
   const buttonText = formType === "SIGN_IN" ? "Sign In" : "Sign Out";
   return (
@@ -91,7 +85,7 @@ const AuthForm = <T extends z.ZodTypeAny>({
 
         {formType === "SIGN_IN" ? (
           <p>
-            Don't have an account?{" "}
+            Don't have an account?
             <Link
               href={ROUTES.SIGN_UP}
               className="paragraph-medium primary-text-gradient"
@@ -101,7 +95,7 @@ const AuthForm = <T extends z.ZodTypeAny>({
           </p>
         ) : (
           <p>
-            Already have an account?{" "}
+            Already have an account?
             <Link
               href={ROUTES.SIGN_IN}
               className="paragraph-medium primary-text-gradient"

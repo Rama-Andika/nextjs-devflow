@@ -6,9 +6,10 @@ const ROUTES = {
   COLLECTIONS: "/collections",
   JOBS: "/find-jobs",
   TAGS: "/tags",
+  ASK_QUESTION: "/ask-question",
   TAG: (id: string): string => `/tags/${id}`,
   PROFILE: (id: string): string => `/profile/${id}`,
-  ASK_QUESTION: "/ask-question",
+  QUESTION: (id: string): string => `/question/${id}`,
 };
 
 export default ROUTES;

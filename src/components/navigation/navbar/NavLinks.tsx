@@ -18,7 +18,9 @@ const NavLinks = ({ isMobileNav = false }: { isMobileNav?: boolean }) => {
         let isActive = false;
 
         if (typeof link.route === "function") {
-          userId && (route = link.route(userId));
+          if (userId) {
+            route = link.route(userId);
+          }
         } else {
           route = link.route;
         }

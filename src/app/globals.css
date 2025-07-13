@@ -42,6 +42,11 @@ body {
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+  --dark-gradient: linear-gradient(
+    232deg,
+    rgba(72, 87, 109, 0.41) 0%,
+    rgba(38, 44, 56, 0.7) 100%
+  );
 }
 
 @theme {
@@ -290,14 +295,6 @@ body {
 
   .primary-gradient {
     background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
-  }
-
-  .dark-gradient {
-    background: linear-gradient(
-      232deg,
-      rgba(23, 28, 35, 0.41) 0%,
-      rgba(19, 22, 28, 0.7) 100%
-    );
   }
 
   .light-gradient {
